@@ -1,8 +1,8 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { NavButtons, Nav } from "./Styled-Components";
 
 const Navigation = (props) => {
-  const { logout } = props;
+  // const { logout } = props;
   return (
     <Nav>
       <div>
@@ -39,11 +39,11 @@ const Navigation = (props) => {
             Edit your info
           </Link>
         </NavButtons>
-        <NavButtons>
+        {/* <NavButtons>
           <Link to="#" onClick={logout} className="navlinks">
             Log Out
           </Link>
-        </NavButtons>
+        </NavButtons> */}
       </div>
     </Nav>
   );
