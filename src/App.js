@@ -24,7 +24,8 @@ function App() {
 
   return (
     <div>
-      <Navigation logout={logout} />
+      {/* I will put logout props inside Navigation  logout={logout}*/}
+      <Navigation />
       <Switch>
         <Route exact path="/">
           <Home />
