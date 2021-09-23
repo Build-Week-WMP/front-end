@@ -1,28 +1,31 @@
 import { Styles } from "./Styled-Components";
 import { useState, useEffect } from "react";
 import * as yup from "yup";
+import axiosWithAuth from "./axiosWithAuth";
+import { useHistory } from "react-router-dom";
 
 const schema = yup.object().shape({
   username: yup.string().min(2, "Names must be at least 2 characters long"),
   password: yup.string().min(8, "Minimum 8 characters required!"),
-  phoneNumber: yup
+  phone_number: yup
     .number()
     .min(7, "Enter the full number")
     .required("Phone Number is Required"),
 });
 
-const Signup = () => {
+const Signup = (props) => {
+  const history = useHistory();
   const [disabled, setDisabled] = useState(true);
 
   const [form, updateValue] = useState({
     username: "",
-    phoneNumber: "",
+    phone_number: "",
     password: "",
   });
 
   const [errors, setErrors] = useState({
     username: " ",
-    phoneNumber: " ",
+    phone_number: " ",
     password: " ",
   });
 
@@ -40,27 +43,42 @@ const Signup = () => {
   const changeFunction = (e) => {
     setFormErrors(e.target.name, e.target.value);
     updateValue({ ...form, [e.target.name]: e.target.value });
-    console.log("form data in change", form);
+    // console.log("form data in change", form);
   };
 
   useEffect(() => {
     schema.isValid(form).then((valid) => setDisabled(!valid));
   }, [form]);
 
-  const submitFunction = (e) => {
+  // const submitFunction = (e) => {
+  //   e.preventDefault();
+  //   console.log("form", form);
+  //   updateValue({
+  //     username: "",
+  //     phoneNumber: "",
+  //     password: "",
+  //   });
+  // };
+
+  const signUp = (e) => {
     e.preventDefault();
-    console.log("form", form);
-    updateValue({
-      username: "",
-      phoneNumber: "",
-      password: "",
-    });
+    axiosWithAuth()
+      .post("/api/auth/register", form)
+      .then((res) => {
+        console.log(res);
+        updateValue({
+          username: "",
+          phone_number: "",
+          password: "",
+        });
+        history.push("/login");
+      });
   };
 
   return (
     <Styles>
       <h1>Sign Up Form</h1>
-      <form onSubmit={submitFunction}>
+      <form onSubmit={signUp}>
         <label>
           {" "}
           User Name:
@@ -75,16 +93,16 @@ const Signup = () => {
         <p className="error">{errors.username}</p>
         <label>
           {" "}
-          Cell Number:
+          Phone Number:
           <input
             onChange={changeFunction}
-            value={form.phoneNumber}
-            name="phoneNumber"
+            value={form.phone_number}
+            name="phone_number"
             type="string"
             placeholder="Enter Phone Number"
           />
         </label>
-        <p className="error">{errors.phoneNumber}</p>
+        <p className="error">{errors.phone_number}</p>
         <label>
           {" "}
           Password:

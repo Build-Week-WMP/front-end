@@ -2,6 +2,7 @@ import { Styles } from "./Styled-Components";
 import { useState, useEffect } from "react";
 import * as yup from "yup";
 import axiosWithAuth from "./axiosWithAuth";
+import { useHistory } from "react-router-dom";
 
 const schema = yup.object().shape({
   username: yup.string().min(2, "Names must be at least 2 characters long"),
@@ -9,6 +10,7 @@ const schema = yup.object().shape({
 });
 
 const Login = (props) => {
+  const history = useHistory();
   const { setID } = props;
   // console.log(ID);
   const [disabled, setDisabled] = useState(true);
@@ -31,6 +33,7 @@ const Login = (props) => {
         setID(res.data.user_id);
         localStorage.setItem("token", res.data.token);
         console.log(res);
+        history.push("/plants");
       })
       .catch((err) => {
         console.log(err);

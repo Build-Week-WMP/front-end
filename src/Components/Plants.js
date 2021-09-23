@@ -1,9 +1,7 @@
-import PlantForm from "./PlantForm";
-
 const Plants = () => {
   return (
     <div>
-      <PlantForm />
+      <h1>Here is your plants</h1>
     </div>
   );
 };

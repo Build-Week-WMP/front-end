@@ -4,20 +4,14 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Plants from "./Components/Plants";
+import PlantForm from "./Components/PlantForm";
 import Navigation from "./Components/Navigation";
 import EditUser from "./Components/editYourInfo/EditUser";
+import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
-  //I will use useEffect(axiosWithAuth).
-  // const { state, setState, } = useState(initialPlants);
-
-  // const addPlant =(plant)=>{
-  //   setState([...state,plant])
-  // }
-
   const history = useHistory();
   const logout = () => {
-    // after done the backend I will comment it out!
     localStorage.removeItem("token");
     localStorage.removeItem("id");
     history.push("/");
@@ -25,6 +19,7 @@ function App() {
   };
 
   const [ID, setID] = useState(null);
+  // const [singUp, setSignUp] = useState(null);
 
   return (
     <div>
@@ -41,13 +36,14 @@ function App() {
           <Login ID={ID} setID={setID} />
         </Route>
         {/* ⬇️ I will put PrivateRoute */}
-        <Route path="/plants">
-          <Plants />
-        </Route>
-        <Route path="/PlantList"></Route>
-        <Route path="/edituser">
-          <EditUser ID={ID} />
-        </Route>
+        <PrivateRoute path="/plants" component={Plants} />
+
+        <PrivateRoute path="/addPlant" component={PlantForm} />
+
+        <PrivateRoute
+          path="/edituser"
+          render={(routeProps) => <EditUser ID={ID} {...routeProps} />}
+        />
       </Switch>
       {ID}
     </div>
