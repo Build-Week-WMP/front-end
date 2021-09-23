@@ -1,10 +1,9 @@
-import { HomeDiv, IMG } from "./Styled-Components";
+import { HomeDiv, IMG, Description } from "./Styled-Components";
 
 const Home = () => {
   return (
     <HomeDiv>
-      <h3>Let us help you water your plants.</h3>
-      <p>or not.</p>
+      <Description>Let us help you water your plants.</Description>
       <IMG src="https://svgsilh.com/svg/48879.svg" alt="watering can" />
     </HomeDiv>
   );

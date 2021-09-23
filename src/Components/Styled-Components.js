@@ -1,28 +1,34 @@
 import styled from 'styled-components';
 
 export const Styles = styled.div`
- background: grey;
+ background: #A6FFBE;
  padding: 10px;
  width: 50%;
  margin: 0 auto;
  border-radius: 10px;
+ border: 1px solid black;
  font-family: "Open Sans", sans-serif;
 
  h1 {
-   border-bottom: 1px solid white;
-   color: #3d3d3d;
+   border-bottom: 1px solid #2D8043;
+   font-family: 'Caveat', cursive;
+   color: #2D8043;
    margin: 3;
-   font-size: 20px;
+   font-size: 30px;
    font-weight: 600;
    line-height: 24px;
    padding: 5px;
    text-align: center;
  }
 
+ p {
+  color: #2D8043;
+ }
+
  form {
-   background: white;
-   font-family: "Open Sans", sans-serif;
-   border: 1px solid #dedede;
+   background: #47CC6B;
+   font-family: 'Caveat', cursive;
+   border: 1px solid #2D8043;
    border-radius: 10px;
    display: flex;
    flex-direction: column;
@@ -33,18 +39,20 @@ export const Styles = styled.div`
  }
 
  input {
-   border: 1px solid #black;
-   font-family: "Open Sans", sans-serif;
+   border: 1px solid #2D8043;
+   font-family: 'Caveat', cursive;
    border-radius: 4px;
    box-sizing: border-box;
    padding: 10px;
    width: 100%;
+   background: #A6FFBE;
+   color: #2D8043;
  }
 
  label {
-   color: black;
+   color: #2D8043;
    display: block;
-   font-family: "Open Sans", sans-serif;
+   font-family: 'Caveat', cursive;
    font-size: 16px;
    font-weight: 500;
    margin-bottom: 5px;
@@ -55,19 +63,23 @@ export const Styles = styled.div`
  }
 
  .submitButton {
-   background-color: black;
-   color: white;
-   font-family: sans-serif;
+   background-color: #2D8043;
+   border-radius: 3px;
+   text-transform: uppercase;
+   height: 30px;
+   color: #A6FFBE;
+   font-family: 'Caveat', cursive;
    font-size: 14px;
    margin: 20px 0px;
 `;
 
 export const NavButtons = styled.button`
-  font-family: "Open Sans", sans-serif;
+font-family: 'Caveat', cursive;
   font-size: 16px;
   letter-spacing: 2px;
   text-decoration: none;
   text-transform: uppercase;
+  background: #A6FFBE;
   color: #000;
   cursor: pointer;
   border: 3px solid;
@@ -92,11 +104,25 @@ export const Nav = styled.div`
   padding-bottom: 20px;
 `;
 
+export const Title = styled.h1`
+font-family: 'Dancing Script', cursive;
+color: #A6FFBE;
+font-size: 45px;
+`;
+
 export const HomeDiv = styled.div`
   width: 80%;
   margin: 0 auto;
   padding-top: 30px;
   text-align: center;
+  font-family: "Open Sans", sans-serif;
+  color: #2D8043;
+`;
+
+export const Description = styled.h2`
+font-family: 'Caveat', cursive;
+color: #A6FFBE;
+font-size: 30px;
 `;
 
 export const IMG = styled.img`

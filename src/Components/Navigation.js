@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { NavButtons, Nav } from "./Styled-Components";
+import { NavButtons, Nav, Title } from "./Styled-Components";
 
 const Navigation = (props) => {
   const { logout } = props;
   return (
     <Nav>
       <div>
-        <h1>Water my Plants</h1>
+        <Title>Water my Plants</Title>
       </div>
       <div>
         <NavButtons>

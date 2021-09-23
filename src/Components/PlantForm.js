@@ -47,7 +47,7 @@ const PlantForm = () => {
               placeholder="Enter species"
             />
           </label>
-          <div>
+          <div className="dropdiv">
             <p>H2O Frequency Timer:</p>
             <label>
               Watering Frequency (Days)
@@ -55,6 +55,7 @@ const PlantForm = () => {
                 onChange={enterDetails}
                 value={plant.frequency}
                 name="frequency"
+                className="dropdown"
               >
                 <option>--Select Days--</option>
                 <option value="1">1</option>
@@ -65,7 +66,7 @@ const PlantForm = () => {
               </select>
             </label>
           </div>
-          <button className="submitButton">Add The Plant</button>
+          <button className="submitButton">Add Plant</button>
         </form>
       </Styles>
     </div>
