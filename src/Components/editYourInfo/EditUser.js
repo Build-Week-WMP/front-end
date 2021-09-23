@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Styles } from "./../Styled-Components";
-import axiosWithAuth from "../../axiosWithAuth/axiosWithAuth";
+import axiosWithAuth from "../axiosWithAuth";
 
 const EditUser = (props) => {
   const [user, setUser] = useState({

@@ -1,7 +1,7 @@
 import { Styles } from "./Styled-Components";
 import { useState, useEffect } from "react";
 import * as yup from "yup";
-import axiosWithAuth from "../axiosWithAuth/axiosWithAuth";
+import axiosWithAuth from "./axiosWithAuth";
 
 const schema = yup.object().shape({
   username: yup.string().min(2, "Names must be at least 2 characters long"),
