@@ -7,6 +7,7 @@ import Plants from "./Components/Plants";
 import PlantForm from "./Components/PlantForm";
 import Navigation from "./Components/Navigation";
 import EditUser from "./Components/editYourInfo/EditUser";
+import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
   const history = useHistory();
@@ -35,15 +36,14 @@ function App() {
           <Login ID={ID} setID={setID} />
         </Route>
         {/* ⬇️ I will put PrivateRoute */}
-        <Route path="/plants">
-          <Plants />
-        </Route>
-        <Route path="/addPlant">
-          <PlantForm />
-        </Route>
-        <Route path="/edituser">
-          <EditUser ID={ID} />
-        </Route>
+        <PrivateRoute path="/plants" component={Plants} />
+
+        <PrivateRoute path="/addPlant" component={PlantForm} />
+
+        <PrivateRoute
+          path="/edituser"
+          render={(routeProps) => <EditUser ID={ID} {...routeProps} />}
+        />
       </Switch>
       {ID}
     </div>
