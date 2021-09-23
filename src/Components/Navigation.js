@@ -30,8 +30,8 @@ const Navigation = (props) => {
           </Link>
         </NavButtons>
         <NavButtons>
-          <Link to="/addList" className="navlinks">
-            Plant List
+          <Link to="/addPlant" className="navlinks">
+            Add plants
           </Link>
         </NavButtons>
         <NavButtons>

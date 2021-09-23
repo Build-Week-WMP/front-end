@@ -22,7 +22,7 @@ const EditUser = (props) => {
       .put(`/api/users/${props.ID}`, user)
       .then((res) => {
         // console.log(res);
-        alert("your password changed! 🤪");
+        alert("your phoneNumber and password changed! 🤪");
       });
   };
 
