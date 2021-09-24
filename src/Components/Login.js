@@ -1,6 +1,8 @@
 import { Styles } from "./Styled-Components";
 import { useState, useEffect } from "react";
 import * as yup from "yup";
+import axiosWithAuth from "./axiosWithAuth";
+import { useHistory } from "react-router-dom";
 
 const schema = yup.object().shape({
   username: yup.string().min(2, "Names must be at least 2 characters long"),
@@ -8,6 +10,9 @@ const schema = yup.object().shape({
 });
 
 const Login = (props) => {
+  const history = useHistory();
+  const { setID } = props;
+  // console.log(ID);
   const [disabled, setDisabled] = useState(true);
 
   const [form, updateValue] = useState({
@@ -19,6 +24,21 @@ const Login = (props) => {
     username: " ",
     password: " ",
   });
+
+  const login = (e) => {
+    e.preventDefault();
+    return axiosWithAuth()
+      .post("/api/auth/login", form)
+      .then((res) => {
+        setID(res.data.user_id);
+        localStorage.setItem("token", res.data.token);
+        console.log(res);
+        history.push("/plants");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const setFormErrors = (name, value) => {
     console.log(name, value);
@@ -34,28 +54,28 @@ const Login = (props) => {
   const changeFunction = (e) => {
     setFormErrors(e.target.name, e.target.value);
     updateValue({ ...form, [e.target.name]: e.target.value });
-    console.log("form data in change", form);
+    // console.log("form data in change", form);
   };
 
   useEffect(() => {
     schema.isValid(form).then((valid) => setDisabled(!valid));
   }, [form]);
 
-  const submitFunction = (e) => {
-    e.preventDefault();
-    //⬇️ call axiosWithAuth with post request to api login route
-    console.log("form", form);
-    //This is the way to clear the form after submission
-    updateValue({
-      username: "",
-      password: "",
-    });
-  };
+  // const submitFunction = (e) => {
+  //   e.preventDefault();
+  //   //⬇️ call axiosWithAuth with post request to api login route
+  //   console.log("form", form);
+  //   //This is the way to clear the form after submission
+  //   updateValue({
+  //     username: "",
+  //     password: "",
+  //   });
+  // };
 
   return (
     <Styles>
       <h1>Log In</h1>
-      <form onSubmit={submitFunction}>
+      <form onSubmit={login}>
         <label>
           {" "}
           User Name:
