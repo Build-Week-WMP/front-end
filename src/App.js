@@ -5,6 +5,7 @@ import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Plants from "./Components/Plants";
 import Navigation from "./Components/Navigation";
+import PlantList from "./Components/PlantList";
 
 function App() {
   //I will use useEffect(axiosWithAuth).
@@ -40,7 +41,9 @@ function App() {
         <Route path="/plants">
           <Plants />
         </Route>
-        <Route path="/PlantList"></Route>
+        <Route path="/PlantList">
+          <PlantList />
+        </Route>
         <Route path="/editYourInfo"></Route>
       </Switch>
     </div>

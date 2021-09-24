@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Styles } from "./Styled-Components";
+import axios from 'axios'
 
 const PlantForm = () => {
   const initialPlant = {
     nickname: "",
     species: "",
-    frequency: 1,
+    h2oFrequency: 1,
   };
 
   const [plant, setPlant] = useState(initialPlant);
@@ -19,7 +20,10 @@ const PlantForm = () => {
 
   const createPlant = (e) => {
     e.preventDefault();
-    console.log("plant data in form", plant);
+
+    axios.post('https://beta-water-my-plants.herokuapp.com/api/plants', plant)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
   };
 
   return (
@@ -53,8 +57,8 @@ const PlantForm = () => {
               Watering Frequency (Days)
               <select
                 onChange={enterDetails}
-                value={plant.frequency}
-                name="frequency"
+                value={plant.h2oFrequency}
+                name="h2oFrequency"
               >
                 <option>--Select Days--</option>
                 <option value="1">1</option>
