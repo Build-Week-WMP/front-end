@@ -6,6 +6,7 @@ import Login from "./Components/Login";
 import Plants from "./Components/Plants";
 import PlantForm from "./Components/PlantForm";
 import Navigation from "./Components/Navigation";
+import PlantList from "./Components/PlantList";
 import EditUser from "./Components/editYourInfo/EditUser";
 import PrivateRoute from "./Components/PrivateRoute";
 
@@ -36,6 +37,7 @@ function App() {
           <Login ID={ID} setID={setID} />
         </Route>
         {/* ⬇️ I will put PrivateRoute */}
+        <PrivateRoute path="/PlantList" component={PlantList} />
         <PrivateRoute path="/plants" component={Plants} />
 
         <PrivateRoute path="/addPlant" component={PlantForm} />
