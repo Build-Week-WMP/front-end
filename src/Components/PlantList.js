@@ -1,28 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import { Styles } from "./Styled-Components";
-import fetchPlantService from '../services/fetchPlantService';
+import PlantCard from './PlantCard';
 import axios from 'axios'
 
-function PlantList() {
-    const [plants, setPlants] = useState('')
+function PlantList(props) {
+    const [plants, setPlants] = useState([])
 
     useEffect(() => {
-        axios
+        const fetchData = () => {
+            axios
           .get('https://beta-water-my-plants.herokuapp.com/api/plants')
           .then(response => {
-            // setPlants(response.data)
-            console.log(response)
+            console.log(response.data)
+            setPlants([...response.data])
+            console.log("these are plants:", plants)
           })
           .catch(error => {
             console.error(error);
           });
-      }, []);
+        }
+        fetchData()
+      }, [plants]);
     
 
     return (
         <Styles>
             <div>
-                test
+                {
+                    plants.map(plant => (
+                        <PlantCard plant={plant}/>
+                    ))
+                }
             </div>
         </Styles>
         
