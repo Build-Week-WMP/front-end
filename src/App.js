@@ -3,7 +3,6 @@ import Home from "./Components/Home";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
-import Plants from "./Components/Plants";
 import PlantForm from "./Components/PlantForm";
 import Navigation from "./Components/Navigation";
 import PlantList from "./Components/PlantList";
@@ -38,7 +37,6 @@ function App() {
         </Route>
         {/* ⬇️ I will put PrivateRoute */}
         <PrivateRoute path="/PlantList" component={PlantList} />
-        <PrivateRoute path="/plants" component={Plants} />
 
         <PrivateRoute path="/addPlant" component={PlantForm} />
 

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Styles } from "./Styled-Components";
-import axios from 'axios'
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const PlantForm = () => {
+  const history = useHistory();
   const initialPlant = {
     nickname: "",
     species: "",
@@ -20,10 +22,11 @@ const PlantForm = () => {
 
   const createPlant = (e) => {
     e.preventDefault();
-
-    axios.post('https://beta-water-my-plants.herokuapp.com/api/plants', plant)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    axios
+      .post("https://beta-water-my-plants.herokuapp.com/api/plants", plant)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    history.push("/PlantList");
   };
 
   return (

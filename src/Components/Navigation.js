@@ -25,8 +25,8 @@ const Navigation = (props) => {
           </Link>
         </NavButtons>
         <NavButtons>
-          <Link to="/plants" className="navlinks">
-            My Plants
+          <Link to="/addPlant" className="navlinks">
+            Add Plant
           </Link>
         </NavButtons>
         <NavButtons>
@@ -36,7 +36,7 @@ const Navigation = (props) => {
         </NavButtons>
         <NavButtons>
           <Link to="/edituser" className="navlinks">
-            Edit your info
+            Edit Your Info
           </Link>
         </NavButtons>
         <NavButtons>

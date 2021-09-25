@@ -33,7 +33,7 @@ const Login = (props) => {
         setID(res.data.user_id);
         localStorage.setItem("token", res.data.token);
         console.log(res);
-        history.push("/plants");
+        history.push("/PlantList");
       })
       .catch((err) => {
         console.log(err);
